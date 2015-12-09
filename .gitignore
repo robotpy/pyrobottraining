@@ -1,0 +1,10 @@
+*.py[cdo]
+__pycache__
+.coverage
+.cache
+
+.project
+.pydevproject
+.settings
+
+
