@@ -320,6 +320,9 @@ def test_s2(robot, hal_data, control):
   mode, when the robot enters teleop it should not turn motor4 back on until
   the trigger has been pressed and released again'''
     
+    hal_data['power']['vin_voltage'] = 12.0
+    hal_data['pdp']['voltage'] = 12.0
+
     def _on_step(tm, step):
         
         # set z-axis to a random value
