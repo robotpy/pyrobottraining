@@ -133,6 +133,7 @@ def test_m2(robot, hal_data, control):
   to 0'''
     
     hal_data['power']['vin_voltage'] = 12.0
+    hal_data['pdp']['voltage'] = 12.0
     
     def _on_step(tm, step):
         if step <= 10:
@@ -157,6 +158,7 @@ def test_m3(robot, hal_data, control):
   X axis'''
     
     hal_data['power']['vin_voltage'] = 12.0
+    hal_data['pdp']['voltage'] = 12.0
     
     def _on_step(tm, step):
         
@@ -194,6 +196,7 @@ def test_m4(robot, hal_data, control):
   value of the joystick's Y axis. If it is off, then set the motor to 0.'''
     
     hal_data['power']['vin_voltage'] = 12.0
+    hal_data['pdp']['voltage'] = 12.0
     
     def _on_step(tm, step):
         
@@ -244,6 +247,7 @@ def test_s1(robot, hal_data, control):
     #       but that would be annoying to check...
     
     hal_data['power']['vin_voltage'] = 12.0
+    hal_data['pdp']['voltage'] = 12.0
     hal_data['dio'][1]['value'] = True
     
     # The joystick value is a random number
@@ -267,9 +271,11 @@ def test_s1(robot, hal_data, control):
             elif step < 16: # low voltage! oh noes!
                 nv1 = nv2 = 0
                 hal_data['power']['vin_voltage'] = 8.0
+                hal_data['pdp']['voltage'] = 8.0
                 
             else: # back to normal
                 hal_data['power']['vin_voltage'] = 12.0
+                hal_data['pdp']['voltage'] = 12.0
              
         elif step < 30: # disabled
             nv1 = nv2 = 0
@@ -280,10 +286,12 @@ def test_s1(robot, hal_data, control):
                 # low voltage! oh noes!
                 nv1 = nv2 = 0
                 hal_data['power']['vin_voltage'] = 8.0
+                hal_data['pdp']['voltage'] = 8.0
         
         elif step < 50: # disabled
             nv1 = nv2 = 0
             hal_data['power']['vin_voltage'] = 12.0
+            hal_data['pdp']['voltage'] = 12.0
         
         elif step < 60: # enabled: check to see that the motors went back on
             pass
@@ -312,6 +320,9 @@ def test_s2(robot, hal_data, control):
   mode, when the robot enters teleop it should not turn motor4 back on until
   the trigger has been pressed and released again'''
     
+    hal_data['power']['vin_voltage'] = 12.0
+    hal_data['pdp']['voltage'] = 12.0
+
     def _on_step(tm, step):
         
         # set z-axis to a random value
